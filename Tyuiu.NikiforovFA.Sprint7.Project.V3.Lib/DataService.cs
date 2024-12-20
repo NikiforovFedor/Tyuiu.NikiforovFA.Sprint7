@@ -8,7 +8,7 @@ namespace Tyuiu.NikiforovFA.Sprint7.Project.V3.Lib
         {
             int rows;
             int columns;
-            string FileData = File.ReadAllText(path, Encoding.UTF8);
+            string FileData = File.ReadAllText(path);
             FileData = FileData.Replace('\n', '\r');
 
             string[] lines = FileData.Split(new char[] { '\r' }, StringSplitOptions.RemoveEmptyEntries);
