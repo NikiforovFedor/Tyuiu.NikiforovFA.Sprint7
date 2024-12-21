@@ -30,7 +30,7 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             panelMenu_NFA = new Panel();
             TabBarNavigation_NFA = new TabControl();
             tabPageFile_NFA = new TabPage();
@@ -40,6 +40,9 @@
             labelImport_NFA = new Label();
             buttonImport_NFA = new Button();
             tabPageMain_NFA = new TabPage();
+            groupBoxSearch_NFA = new GroupBox();
+            buttonSearch_NFA = new Button();
+            textBoxSearch_NFA = new TextBox();
             groupBoxEdit_NFA = new GroupBox();
             labelRemoveRow_NFA = new Label();
             labelAddRow_NFA = new Label();
@@ -47,31 +50,27 @@
             buttonAddRow_NFA = new Button();
             tabPageInformation_NFA = new TabPage();
             panelGrid_NFA = new Panel();
+            dataGridViewMainGrid_NFA = new DataGridView();
+            ColumnID_NFA = new DataGridViewTextBoxColumn();
+            ColumnName_NFA = new DataGridViewTextBoxColumn();
+            ColumnNumber_NFA = new DataGridViewTextBoxColumn();
+            ColumnSubject_NFA = new DataGridViewTextBoxColumn();
+            ColumnAge_NFA = new DataGridViewTextBoxColumn();
+            ColumnAudienceNumber_NFA = new DataGridViewTextBoxColumn();
+            ColumnExperience_NFA = new DataGridViewTextBoxColumn();
+            ColumnHoursPerWeek_NFA = new DataGridViewTextBoxColumn();
             openFileDialogImport_NFA = new OpenFileDialog();
             saveFileDialogExport_NFA = new SaveFileDialog();
             toolTip_NFA = new ToolTip(components);
-            contextMenuStrip_NFA = new ContextMenuStrip(components);
-            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            ColumnHoursPerWeek_NFA = new DataGridViewTextBoxColumn();
-            ColumnExperience_NFA = new DataGridViewTextBoxColumn();
-            ColumnAudienceNumber_NFA = new DataGridViewTextBoxColumn();
-            ColumnAge_NFA = new DataGridViewTextBoxColumn();
-            ColumnSubject_NFA = new DataGridViewTextBoxColumn();
-            ColumnNumber_NFA = new DataGridViewTextBoxColumn();
-            ColumnName_NFA = new DataGridViewTextBoxColumn();
-            ColumnID_NFA = new DataGridViewTextBoxColumn();
-            dataGridViewMainGrid_NFA = new DataGridView();
-            groupBoxSearch_NFA = new GroupBox();
-            textBoxSearch_NFA = new TextBox();
             panelMenu_NFA.SuspendLayout();
             TabBarNavigation_NFA.SuspendLayout();
             tabPageFile_NFA.SuspendLayout();
             groupBoxFile_NFA.SuspendLayout();
             tabPageMain_NFA.SuspendLayout();
+            groupBoxSearch_NFA.SuspendLayout();
             groupBoxEdit_NFA.SuspendLayout();
             panelGrid_NFA.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewMainGrid_NFA).BeginInit();
-            groupBoxSearch_NFA.SuspendLayout();
             SuspendLayout();
             // 
             // panelMenu_NFA
@@ -136,6 +135,7 @@
             buttonExport_NFA.UseVisualStyleBackColor = false;
             buttonExport_NFA.Click += buttonExport_NFA_Click;
             buttonExport_NFA.MouseEnter += buttonExport_NFA_MouseEnter;
+            buttonExport_NFA.MouseHover += buttonExport_NFA_MouseHover;
             // 
             // labelExport_NFA
             // 
@@ -169,6 +169,7 @@
             buttonImport_NFA.UseVisualStyleBackColor = false;
             buttonImport_NFA.Click += buttonImport_NFA_Click;
             buttonImport_NFA.MouseEnter += buttonImport_NFA_MouseEnter;
+            buttonImport_NFA.MouseHover += buttonImport_NFA_MouseHover;
             // 
             // tabPageMain_NFA
             // 
@@ -181,12 +182,53 @@
             tabPageMain_NFA.TabIndex = 1;
             tabPageMain_NFA.Text = "Главная";
             tabPageMain_NFA.UseVisualStyleBackColor = true;
+            tabPageMain_NFA.Click += tabPageMain_NFA_Click;
+            // 
+            // groupBoxSearch_NFA
+            // 
+            groupBoxSearch_NFA.BackColor = Color.LightGray;
+            groupBoxSearch_NFA.Controls.Add(buttonSearch_NFA);
+            groupBoxSearch_NFA.Controls.Add(textBoxSearch_NFA);
+            groupBoxSearch_NFA.Dock = DockStyle.Left;
+            groupBoxSearch_NFA.Location = new Point(150, 3);
+            groupBoxSearch_NFA.Name = "groupBoxSearch_NFA";
+            groupBoxSearch_NFA.Size = new Size(200, 122);
+            groupBoxSearch_NFA.TabIndex = 1;
+            groupBoxSearch_NFA.TabStop = false;
+            groupBoxSearch_NFA.Text = "Поиск";
+            // 
+            // buttonSearch_NFA
+            // 
+            buttonSearch_NFA.BackColor = Color.White;
+            buttonSearch_NFA.Cursor = Cursors.Hand;
+            buttonSearch_NFA.Enabled = false;
+            buttonSearch_NFA.FlatStyle = FlatStyle.Popup;
+            buttonSearch_NFA.Image = Properties.Resources.search_icon;
+            buttonSearch_NFA.Location = new Point(129, 37);
+            buttonSearch_NFA.Name = "buttonSearch_NFA";
+            buttonSearch_NFA.Size = new Size(34, 34);
+            buttonSearch_NFA.TabIndex = 1;
+            buttonSearch_NFA.UseVisualStyleBackColor = false;
+            buttonSearch_NFA.Click += button1_Click;
+            buttonSearch_NFA.MouseHover += buttonSearch_NFA_MouseHover;
+            // 
+            // textBoxSearch_NFA
+            // 
+            textBoxSearch_NFA.Cursor = Cursors.IBeam;
+            textBoxSearch_NFA.Enabled = false;
+            textBoxSearch_NFA.Location = new Point(6, 44);
+            textBoxSearch_NFA.Name = "textBoxSearch_NFA";
+            textBoxSearch_NFA.Size = new Size(117, 23);
+            textBoxSearch_NFA.TabIndex = 0;
+            textBoxSearch_NFA.MultilineChanged += textBoxSearch_NFA_MultilineChanged;
+            textBoxSearch_NFA.TextChanged += textBoxSearch_NFA_TextChanged;
+            textBoxSearch_NFA.KeyDown += textBoxSearch_NFA_KeyDown;
             // 
             // groupBoxEdit_NFA
             // 
             groupBoxEdit_NFA.BackColor = Color.LightGray;
             groupBoxEdit_NFA.Controls.Add(labelRemoveRow_NFA);
-            groupBoxEdit_NFA.Controls.Add(this.labelAddRow_NFA);
+            groupBoxEdit_NFA.Controls.Add(labelAddRow_NFA);
             groupBoxEdit_NFA.Controls.Add(buttonRemoveRow_NFA);
             groupBoxEdit_NFA.Controls.Add(buttonAddRow_NFA);
             groupBoxEdit_NFA.Dock = DockStyle.Left;
@@ -210,13 +252,13 @@
             // 
             // labelAddRow_NFA
             // 
-            this.labelAddRow_NFA.AutoSize = true;
-            this.labelAddRow_NFA.Location = new Point(10, 89);
-            this.labelAddRow_NFA.Name = "labelAddRow_NFA";
-            this.labelAddRow_NFA.Size = new Size(62, 30);
-            this.labelAddRow_NFA.TabIndex = 2;
-            this.labelAddRow_NFA.Text = "Добавить \r\nстроку";
-            this.labelAddRow_NFA.TextAlign = ContentAlignment.MiddleCenter;
+            labelAddRow_NFA.AutoSize = true;
+            labelAddRow_NFA.Location = new Point(10, 89);
+            labelAddRow_NFA.Name = "labelAddRow_NFA";
+            labelAddRow_NFA.Size = new Size(62, 30);
+            labelAddRow_NFA.TabIndex = 2;
+            labelAddRow_NFA.Text = "Добавить \r\nстроку";
+            labelAddRow_NFA.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // buttonRemoveRow_NFA
             // 
@@ -234,6 +276,7 @@
             buttonRemoveRow_NFA.ClientSizeChanged += buttonRemoveRow_NFA_ClientSizeChanged;
             buttonRemoveRow_NFA.Click += buttonRemoveRow_NFA_Click;
             buttonRemoveRow_NFA.MouseEnter += buttonRemoveRow_NFA_MouseEnter;
+            buttonRemoveRow_NFA.MouseHover += buttonRemoveRow_NFA_MouseHover;
             // 
             // buttonAddRow_NFA
             // 
@@ -250,6 +293,7 @@
             buttonAddRow_NFA.UseVisualStyleBackColor = false;
             buttonAddRow_NFA.Click += buttonAddRow_NFA_Click;
             buttonAddRow_NFA.MouseEnter += buttonAddRow_NFA_MouseEnter;
+            buttonAddRow_NFA.MouseHover += buttonAddRow_NFA_MouseHover;
             // 
             // tabPageInformation_NFA
             // 
@@ -272,6 +316,96 @@
             panelGrid_NFA.Size = new Size(984, 505);
             panelGrid_NFA.TabIndex = 1;
             // 
+            // dataGridViewMainGrid_NFA
+            // 
+            dataGridViewMainGrid_NFA.AllowUserToAddRows = false;
+            dataGridViewMainGrid_NFA.AllowUserToDeleteRows = false;
+            dataGridViewMainGrid_NFA.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCellsExceptHeader;
+            dataGridViewMainGrid_NFA.BackgroundColor = Color.White;
+            dataGridViewMainGrid_NFA.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridViewMainGrid_NFA.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewMainGrid_NFA.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewMainGrid_NFA.Columns.AddRange(new DataGridViewColumn[] { ColumnID_NFA, ColumnName_NFA, ColumnNumber_NFA, ColumnSubject_NFA, ColumnAge_NFA, ColumnAudienceNumber_NFA, ColumnExperience_NFA, ColumnHoursPerWeek_NFA });
+            dataGridViewMainGrid_NFA.Dock = DockStyle.Fill;
+            dataGridViewMainGrid_NFA.EditMode = DataGridViewEditMode.EditOnEnter;
+            dataGridViewMainGrid_NFA.Location = new Point(0, 0);
+            dataGridViewMainGrid_NFA.Name = "dataGridViewMainGrid_NFA";
+            dataGridViewMainGrid_NFA.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            dataGridViewMainGrid_NFA.Size = new Size(984, 505);
+            dataGridViewMainGrid_NFA.TabIndex = 0;
+            dataGridViewMainGrid_NFA.CellContentClick += dataGridView1_CellContentClick;
+            // 
+            // ColumnID_NFA
+            // 
+            ColumnID_NFA.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            ColumnID_NFA.HeaderText = "ID";
+            ColumnID_NFA.MinimumWidth = 30;
+            ColumnID_NFA.Name = "ColumnID_NFA";
+            ColumnID_NFA.Width = 30;
+            // 
+            // ColumnName_NFA
+            // 
+            ColumnName_NFA.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            ColumnName_NFA.HeaderText = "ФИО";
+            ColumnName_NFA.MinimumWidth = 45;
+            ColumnName_NFA.Name = "ColumnName_NFA";
+            ColumnName_NFA.Width = 45;
+            // 
+            // ColumnNumber_NFA
+            // 
+            ColumnNumber_NFA.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            ColumnNumber_NFA.HeaderText = "Номер телефона";
+            ColumnNumber_NFA.MinimumWidth = 80;
+            ColumnNumber_NFA.Name = "ColumnNumber_NFA";
+            ColumnNumber_NFA.Width = 80;
+            // 
+            // ColumnSubject_NFA
+            // 
+            ColumnSubject_NFA.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            ColumnSubject_NFA.HeaderText = "Предмет";
+            ColumnSubject_NFA.MinimumWidth = 60;
+            ColumnSubject_NFA.Name = "ColumnSubject_NFA";
+            ColumnSubject_NFA.Width = 60;
+            // 
+            // ColumnAge_NFA
+            // 
+            ColumnAge_NFA.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            ColumnAge_NFA.HeaderText = "Возраст";
+            ColumnAge_NFA.MinimumWidth = 60;
+            ColumnAge_NFA.Name = "ColumnAge_NFA";
+            ColumnAge_NFA.Width = 60;
+            // 
+            // ColumnAudienceNumber_NFA
+            // 
+            ColumnAudienceNumber_NFA.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            ColumnAudienceNumber_NFA.HeaderText = "Номер аудитории";
+            ColumnAudienceNumber_NFA.MinimumWidth = 80;
+            ColumnAudienceNumber_NFA.Name = "ColumnAudienceNumber_NFA";
+            ColumnAudienceNumber_NFA.Width = 80;
+            // 
+            // ColumnExperience_NFA
+            // 
+            ColumnExperience_NFA.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            ColumnExperience_NFA.HeaderText = "Опыт работы";
+            ColumnExperience_NFA.MinimumWidth = 60;
+            ColumnExperience_NFA.Name = "ColumnExperience_NFA";
+            ColumnExperience_NFA.Width = 60;
+            // 
+            // ColumnHoursPerWeek_NFA
+            // 
+            ColumnHoursPerWeek_NFA.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            ColumnHoursPerWeek_NFA.HeaderText = "Количество часов в неделю";
+            ColumnHoursPerWeek_NFA.MinimumWidth = 85;
+            ColumnHoursPerWeek_NFA.Name = "ColumnHoursPerWeek_NFA";
+            ColumnHoursPerWeek_NFA.Width = 85;
+            // 
             // openFileDialogImport_NFA
             // 
             openFileDialogImport_NFA.FileName = "DataMain.csv";
@@ -284,122 +418,8 @@
             // 
             // toolTip_NFA
             // 
-            toolTip_NFA.IsBalloon = true;
-            toolTip_NFA.Popup += toolTipImport_NFA_Popup;
-            // 
-            // contextMenuStrip_NFA
-            // 
-            contextMenuStrip_NFA.Enabled = false;
-            contextMenuStrip_NFA.Name = "contextMenuStrip_NFA";
-            contextMenuStrip_NFA.Size = new Size(61, 4);
-            // 
-            // ColumnHoursPerWeek_NFA
-            // 
-            ColumnHoursPerWeek_NFA.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            ColumnHoursPerWeek_NFA.HeaderText = "Количество часов в неделю";
-            ColumnHoursPerWeek_NFA.MinimumWidth = 85;
-            ColumnHoursPerWeek_NFA.Name = "ColumnHoursPerWeek_NFA";
-            ColumnHoursPerWeek_NFA.Width = 85;
-            // 
-            // ColumnExperience_NFA
-            // 
-            ColumnExperience_NFA.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            ColumnExperience_NFA.HeaderText = "Опыт работы";
-            ColumnExperience_NFA.MinimumWidth = 60;
-            ColumnExperience_NFA.Name = "ColumnExperience_NFA";
-            ColumnExperience_NFA.Width = 60;
-            // 
-            // ColumnAudienceNumber_NFA
-            // 
-            ColumnAudienceNumber_NFA.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            ColumnAudienceNumber_NFA.HeaderText = "Номер аудитории";
-            ColumnAudienceNumber_NFA.MinimumWidth = 80;
-            ColumnAudienceNumber_NFA.Name = "ColumnAudienceNumber_NFA";
-            ColumnAudienceNumber_NFA.Width = 80;
-            // 
-            // ColumnAge_NFA
-            // 
-            ColumnAge_NFA.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            ColumnAge_NFA.HeaderText = "Возраст";
-            ColumnAge_NFA.MinimumWidth = 60;
-            ColumnAge_NFA.Name = "ColumnAge_NFA";
-            ColumnAge_NFA.Width = 60;
-            // 
-            // ColumnSubject_NFA
-            // 
-            ColumnSubject_NFA.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            ColumnSubject_NFA.HeaderText = "Предмет";
-            ColumnSubject_NFA.MinimumWidth = 60;
-            ColumnSubject_NFA.Name = "ColumnSubject_NFA";
-            ColumnSubject_NFA.Width = 60;
-            // 
-            // ColumnNumber_NFA
-            // 
-            ColumnNumber_NFA.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            ColumnNumber_NFA.HeaderText = "Номер телефона";
-            ColumnNumber_NFA.MinimumWidth = 80;
-            ColumnNumber_NFA.Name = "ColumnNumber_NFA";
-            ColumnNumber_NFA.Width = 80;
-            // 
-            // ColumnName_NFA
-            // 
-            ColumnName_NFA.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            ColumnName_NFA.HeaderText = "ФИО";
-            ColumnName_NFA.MinimumWidth = 45;
-            ColumnName_NFA.Name = "ColumnName_NFA";
-            ColumnName_NFA.Width = 45;
-            // 
-            // ColumnID_NFA
-            // 
-            ColumnID_NFA.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            ColumnID_NFA.HeaderText = "ID";
-            ColumnID_NFA.MinimumWidth = 30;
-            ColumnID_NFA.Name = "ColumnID_NFA";
-            ColumnID_NFA.Width = 30;
-            // 
-            // dataGridViewMainGrid_NFA
-            // 
-            dataGridViewMainGrid_NFA.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCellsExceptHeader;
-            dataGridViewMainGrid_NFA.BackgroundColor = Color.White;
-            dataGridViewMainGrid_NFA.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = SystemColors.Control;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dataGridViewMainGrid_NFA.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            dataGridViewMainGrid_NFA.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewMainGrid_NFA.Columns.AddRange(new DataGridViewColumn[] { ColumnID_NFA, ColumnName_NFA, ColumnNumber_NFA, ColumnSubject_NFA, ColumnAge_NFA, ColumnAudienceNumber_NFA, ColumnExperience_NFA, ColumnHoursPerWeek_NFA });
-            dataGridViewMainGrid_NFA.Dock = DockStyle.Fill;
-            dataGridViewMainGrid_NFA.EditMode = DataGridViewEditMode.EditOnEnter;
-            dataGridViewMainGrid_NFA.Location = new Point(0, 0);
-            dataGridViewMainGrid_NFA.Name = "dataGridViewMainGrid_NFA";
-            dataGridViewMainGrid_NFA.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            dataGridViewMainGrid_NFA.Size = new Size(984, 505);
-            dataGridViewMainGrid_NFA.TabIndex = 0;
-            dataGridViewMainGrid_NFA.CellContentClick += dataGridView1_CellContentClick;
-            // 
-            // groupBoxSearch_NFA
-            // 
-            groupBoxSearch_NFA.BackColor = Color.LightGray;
-            groupBoxSearch_NFA.Controls.Add(textBoxSearch_NFA);
-            groupBoxSearch_NFA.Dock = DockStyle.Left;
-            groupBoxSearch_NFA.Location = new Point(150, 3);
-            groupBoxSearch_NFA.Name = "groupBoxSearch_NFA";
-            groupBoxSearch_NFA.Size = new Size(200, 122);
-            groupBoxSearch_NFA.TabIndex = 1;
-            groupBoxSearch_NFA.TabStop = false;
-            groupBoxSearch_NFA.Text = "Поиск";
-            // 
-            // textBoxSearch_NFA
-            // 
-            textBoxSearch_NFA.Location = new Point(6, 44);
-            textBoxSearch_NFA.Name = "textBoxSearch_NFA";
-            textBoxSearch_NFA.Size = new Size(151, 23);
-            textBoxSearch_NFA.TabIndex = 0;
-            toolTip_NFA.SetToolTip(textBoxSearch_NFA, "Введите запрос");
+            toolTip_NFA.ToolTipIcon = ToolTipIcon.Info;
+            toolTip_NFA.ToolTipTitle = "Подсказка";
             // 
             // FormMain
             // 
@@ -420,12 +440,12 @@
             groupBoxFile_NFA.ResumeLayout(false);
             groupBoxFile_NFA.PerformLayout();
             tabPageMain_NFA.ResumeLayout(false);
+            groupBoxSearch_NFA.ResumeLayout(false);
+            groupBoxSearch_NFA.PerformLayout();
             groupBoxEdit_NFA.ResumeLayout(false);
             groupBoxEdit_NFA.PerformLayout();
             panelGrid_NFA.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridViewMainGrid_NFA).EndInit();
-            groupBoxSearch_NFA.ResumeLayout(false);
-            groupBoxSearch_NFA.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -448,11 +468,9 @@
         private TabPage tabPageInformation_NFA;
         private GroupBox groupBoxFile_NFA;
         private Button buttonAddRow_NFA;
-        private ToolTip toolTip_NFA;
         private Button buttonRemoveRow_NFA;
         private Label labelRemoveRow_NFA;
         private System.Windows.Forms.Label labelAddRow_NFA;
-        private ContextMenuStrip contextMenuStrip_NFA;
         private DataGridView dataGridViewMainGrid_NFA;
         private DataGridViewTextBoxColumn ColumnID_NFA;
         private DataGridViewTextBoxColumn ColumnName_NFA;
@@ -462,8 +480,9 @@
         private DataGridViewTextBoxColumn ColumnAudienceNumber_NFA;
         private DataGridViewTextBoxColumn ColumnExperience_NFA;
         private DataGridViewTextBoxColumn ColumnHoursPerWeek_NFA;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private GroupBox groupBoxSearch_NFA;
         private TextBox textBoxSearch_NFA;
+        private Button buttonSearch_NFA;
+        private ToolTip toolTip_NFA;
     }
 }

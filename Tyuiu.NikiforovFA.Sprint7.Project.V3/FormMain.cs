@@ -1,5 +1,6 @@
 using System.Windows.Forms;
 using Tyuiu.NikiforovFA.Sprint7.Project.V3.Lib;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 namespace Tyuiu.NikiforovFA.Sprint7.Project.V3
 {
     public partial class FormMain : Form
@@ -67,6 +68,7 @@ namespace Tyuiu.NikiforovFA.Sprint7.Project.V3
                 File.AppendAllText(path, str + Environment.NewLine);
                 str = "";
             }
+
         }
 
         private void buttonImport_NFA_Click(object sender, EventArgs e)
@@ -102,11 +104,12 @@ namespace Tyuiu.NikiforovFA.Sprint7.Project.V3
                         }
                     }
                 }
-                array = ds.OpenFile(OpenFilePath);
                 dataGridViewMainGrid_NFA.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 buttonExport_NFA.Enabled = true;
                 buttonAddRow_NFA.Enabled = true;
                 buttonRemoveRow_NFA.Enabled = true;
+                textBoxSearch_NFA.Enabled = true;
+                buttonSearch_NFA.Enabled = true;
             }
             catch
             {
@@ -126,17 +129,17 @@ namespace Tyuiu.NikiforovFA.Sprint7.Project.V3
 
         private void buttonImport_NFA_MouseEnter(object sender, EventArgs e)
         {
-            toolTip_NFA.ToolTipTitle = "Импортировать файл";
+            
         }
 
         private void buttonExport_NFA_MouseEnter(object sender, EventArgs e)
         {
-            toolTip_NFA.ToolTipTitle = "Экпортировать файл";
+            
         }
 
         private void buttonAddRow_NFA_MouseEnter(object sender, EventArgs e)
         {
-            toolTip_NFA.ToolTipTitle = "Добавить строку";
+
         }
 
         private void buttonAddRow_NFA_Click(object sender, EventArgs e)
@@ -151,7 +154,7 @@ namespace Tyuiu.NikiforovFA.Sprint7.Project.V3
 
         private void buttonRemoveRow_NFA_MouseEnter(object sender, EventArgs e)
         {
-            toolTip_NFA.ToolTipTitle = "Удалить строку";
+
         }
 
         private void buttonRemoveRow_NFA_ClientSizeChanged(object sender, EventArgs e)
@@ -170,12 +173,93 @@ namespace Tyuiu.NikiforovFA.Sprint7.Project.V3
             }
             else
             {
-                MessageBox.Show("Пожайлуйста, выберите строки для удаления.");
+                MessageBox.Show("Пожалуйста, выберите строку для удаления", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void labelAddRow_NFA_MouseEnter(object sender, EventArgs e)
         {
 
+        }
+
+        private void tabPageMain_NFA_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string request = textBoxSearch_NFA.Text.ToLower();
+
+            dataGridViewMainGrid_NFA.ClearSelection();
+
+            foreach (DataGridViewRow row in dataGridViewMainGrid_NFA.Rows)
+            {
+                bool visible = false;
+
+                if (!row.IsNewRow)
+                {
+                    foreach (DataGridViewCell Cell in row.Cells)
+                    {
+                        if (Cell.Value != null && Cell.Value.ToString().ToLower().Contains(request))
+                        {
+                            visible = true;
+                            break;
+                        }
+                    }
+                }
+
+                row.Visible = visible;
+            }
+        }
+
+        private void textBoxSearch_NFA_TextChanged(object sender, EventArgs e)
+        {
+            if (textBoxSearch_NFA.TextLength == 0)
+            {
+                foreach (DataGridViewRow row in dataGridViewMainGrid_NFA.Rows)
+                {
+                    row.Visible = true;
+                }
+            }
+        }
+
+        private void textBoxSearch_NFA_MultilineChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxSearch_NFA_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                button1_Click(sender, e);
+
+            }
+        }
+
+        private void buttonRemoveRow_NFA_MouseHover(object sender, EventArgs e)
+        {
+            toolTip_NFA.ToolTipTitle = "Удалить строку";
+        }
+
+        private void buttonAddRow_NFA_MouseHover(object sender, EventArgs e)
+        {
+            toolTip_NFA.ToolTipTitle = "Добавить строку";
+        }
+
+        private void buttonSearch_NFA_MouseHover(object sender, EventArgs e)
+        {
+            toolTip_NFA.ToolTipTitle = "Начать поиск";
+        }
+
+        private void buttonImport_NFA_MouseHover(object sender, EventArgs e)
+        {
+            toolTip_NFA.ToolTipTitle = "Импортировать файл";
+        }
+
+        private void buttonExport_NFA_MouseHover(object sender, EventArgs e)
+        {
+            toolTip_NFA.ToolTipTitle = "Экпортировать файл";
         }
     }
 }
