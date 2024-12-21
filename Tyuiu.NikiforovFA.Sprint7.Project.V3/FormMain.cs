@@ -8,33 +8,20 @@ namespace Tyuiu.NikiforovFA.Sprint7.Project.V3
         {
             InitializeComponent();
         }
+
         DataService ds = new DataService();
         int rows;
         int columns;
-        string OpenFilePath;
+        string OpenFilePath = "";
 
         private void AddRow_Click(object sender, EventArgs e)
         {
-            // Создаем новую строку
             DataGridViewRow row = new DataGridViewRow();
-
-            // Добавляем ячейки в строку
-            row.Cells.Add(new DataGridViewTextBoxCell());
-            row.Cells.Add(new DataGridViewTextBoxCell());
-            row.Cells.Add(new DataGridViewTextBoxCell());
-
-            // Устанавливаем значения ячеек
-            row.Cells[0].Value = "Значение ячейки 1";
-            row.Cells[1].Value = "Значение ячейки 2";
-            row.Cells[2].Value = "Значение ячейки 3";
-
-            // Добавляем строку в DataGridView
             dataGridViewMainGrid_NFA.Rows.Add(row);
         }
         private void dataGridViewMainGrid_NFA_MouseDown(object sender, EventArgs e)
         {
-            ContextMenuStrip contextMenuStrip = new ContextMenuStrip();
-            ContextMenuStrip.Items.Add("Добавить строку", null, new EventHandler(AddRow_Click));
+
         }
 
         private void FormMain_Load(object sender, EventArgs e)
@@ -118,6 +105,8 @@ namespace Tyuiu.NikiforovFA.Sprint7.Project.V3
                 array = ds.OpenFile(OpenFilePath);
                 dataGridViewMainGrid_NFA.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 buttonExport_NFA.Enabled = true;
+                buttonAddRow_NFA.Enabled = true;
+                buttonRemoveRow_NFA.Enabled = true;
             }
             catch
             {
@@ -153,6 +142,40 @@ namespace Tyuiu.NikiforovFA.Sprint7.Project.V3
         private void buttonAddRow_NFA_Click(object sender, EventArgs e)
         {
             dataGridViewMainGrid_NFA.Rows.Insert(0);
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonRemoveRow_NFA_MouseEnter(object sender, EventArgs e)
+        {
+            toolTip_NFA.ToolTipTitle = "Удалить строку";
+        }
+
+        private void buttonRemoveRow_NFA_ClientSizeChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonRemoveRow_NFA_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewMainGrid_NFA.SelectedRows.Count > 0)
+            {
+                foreach (DataGridViewRow row in dataGridViewMainGrid_NFA.SelectedRows)
+                {
+                    dataGridViewMainGrid_NFA.Rows.Remove(row);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Пожайлуйста, выберите строки для удаления.");
+            }
+        }
+        private void labelAddRow_NFA_MouseEnter(object sender, EventArgs e)
+        {
+
         }
     }
 }
