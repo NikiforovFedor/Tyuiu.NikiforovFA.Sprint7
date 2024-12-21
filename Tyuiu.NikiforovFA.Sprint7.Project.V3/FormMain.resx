@@ -118,6 +118,21 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="buttonAddRow_NFA.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vAAADrwBlbxySQAAAi5JREFUaEPVmsEqBXEYxWchWVp4FAtLSwtJkiRJFhYeQJKUJEnyDJ5AVvIAsrTw
+        DLKUtQXnNxmN26E7MTn/U7+7uDO3zsz8/993uvNVPWlaXIon8SzuxJYYFfE6Fm/fcCvGRaw2hDPehicT
+        qRHxKJzpQSZFnDDlzDp2RJxmhTPrOBdxmhPOrONMxGleOLOOUxGnBeHMOk5EnBaFM+ugV8RpSTizjuIv
+        4EjEaVk4s45DEacV4cw6DkScVoUz69gXcVoTzqxjT8RpXTizjl0Rp2GidENvYY5ITKokmBENgA5Lk6JM
+        UmnYrKx3lgx3HTB/IZxZx43gKbCU2A9saioTUGLpE3RrIge5ifAH/GZKWG2KYfP8f3MtJsSnuEp3YjL3
+        YkxUMx9flMi2qNejO1gCD6J6aX1RGq+i/nAHS4CbXz8Gd7AEWP71RnAHS4ACVJciSpI7IZkvfwzQFGgO
+        7sQ0aLY0XSvaNO26ad1cJe2ctk57p803LZ/2TwwgDvCbLuWY2EH8aKIIsYR4QkwhrhBbiC/EmCbSEG+I
+        OcSdXkRAc2YdmI8TT8GZdXDX48RScmYdLJk4sR+cWQfrPU5samfWwWaNE5XJmXVQaeJEiXVmHZTJOP30
+        bmyQ4i+AJhUnurUz66DDxonI4cw6iAZx6vLHAK+j4kT4c2YdBLM4dQlzRb8nJs/3Fol/qyvhTLeJjNKN
+        GORgoMMZh8h3Y4NipIbRGkZsGLVh5IYBD0Zw/lhV9Q5i82YW2+aXZwAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="buttonExport_NFA.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
@@ -155,7 +170,7 @@
   <metadata name="ColumnExperience_NFA.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="ColumnHoursPerWeek.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="ColumnHoursPerWeek_NFA.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="openFileDialogImport_NFA.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
@@ -163,5 +178,8 @@
   </metadata>
   <metadata name="saveFileDialogExport_NFA.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>231, 16</value>
+  </metadata>
+  <metadata name="toolTip_NFA.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>421, 16</value>
   </metadata>
 </root>
