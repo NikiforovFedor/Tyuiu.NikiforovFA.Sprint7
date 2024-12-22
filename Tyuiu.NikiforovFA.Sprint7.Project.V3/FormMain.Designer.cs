@@ -30,7 +30,7 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             panelMenu_NFA = new Panel();
             TabBarNavigation_NFA = new TabControl();
             tabPageFile_NFA = new TabPage();
@@ -62,6 +62,9 @@
             openFileDialogImport_NFA = new OpenFileDialog();
             saveFileDialogExport_NFA = new SaveFileDialog();
             toolTip_NFA = new ToolTip(components);
+            labelSelected_NFA = new Label();
+            panelStatistics_NFA = new Panel();
+            labelAvg_NFA = new Label();
             panelMenu_NFA.SuspendLayout();
             TabBarNavigation_NFA.SuspendLayout();
             tabPageFile_NFA.SuspendLayout();
@@ -71,6 +74,7 @@
             groupBoxEdit_NFA.SuspendLayout();
             panelGrid_NFA.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewMainGrid_NFA).BeginInit();
+            panelStatistics_NFA.SuspendLayout();
             SuspendLayout();
             // 
             // panelMenu_NFA
@@ -80,7 +84,7 @@
             panelMenu_NFA.Dock = DockStyle.Top;
             panelMenu_NFA.Location = new Point(0, 0);
             panelMenu_NFA.Name = "panelMenu_NFA";
-            panelMenu_NFA.Size = new Size(984, 156);
+            panelMenu_NFA.Size = new Size(884, 156);
             panelMenu_NFA.TabIndex = 0;
             // 
             // TabBarNavigation_NFA
@@ -92,7 +96,7 @@
             TabBarNavigation_NFA.Location = new Point(0, 0);
             TabBarNavigation_NFA.Name = "TabBarNavigation_NFA";
             TabBarNavigation_NFA.SelectedIndex = 0;
-            TabBarNavigation_NFA.Size = new Size(984, 156);
+            TabBarNavigation_NFA.Size = new Size(884, 156);
             TabBarNavigation_NFA.TabIndex = 0;
             // 
             // tabPageFile_NFA
@@ -102,7 +106,7 @@
             tabPageFile_NFA.Location = new Point(4, 24);
             tabPageFile_NFA.Name = "tabPageFile_NFA";
             tabPageFile_NFA.Padding = new Padding(3);
-            tabPageFile_NFA.Size = new Size(976, 128);
+            tabPageFile_NFA.Size = new Size(876, 128);
             tabPageFile_NFA.TabIndex = 0;
             tabPageFile_NFA.Text = "Файл";
             // 
@@ -115,7 +119,7 @@
             groupBoxFile_NFA.Dock = DockStyle.Fill;
             groupBoxFile_NFA.Location = new Point(3, 3);
             groupBoxFile_NFA.Name = "groupBoxFile_NFA";
-            groupBoxFile_NFA.Size = new Size(970, 122);
+            groupBoxFile_NFA.Size = new Size(870, 122);
             groupBoxFile_NFA.TabIndex = 3;
             groupBoxFile_NFA.TabStop = false;
             groupBoxFile_NFA.Text = "Работа с файлом";
@@ -132,6 +136,7 @@
             buttonExport_NFA.Name = "buttonExport_NFA";
             buttonExport_NFA.Size = new Size(64, 64);
             buttonExport_NFA.TabIndex = 0;
+            toolTip_NFA.SetToolTip(buttonExport_NFA, "Экспортировать файл из программы");
             buttonExport_NFA.UseVisualStyleBackColor = false;
             buttonExport_NFA.Click += buttonExport_NFA_Click;
             buttonExport_NFA.MouseEnter += buttonExport_NFA_MouseEnter;
@@ -166,6 +171,7 @@
             buttonImport_NFA.Name = "buttonImport_NFA";
             buttonImport_NFA.Size = new Size(64, 64);
             buttonImport_NFA.TabIndex = 0;
+            toolTip_NFA.SetToolTip(buttonImport_NFA, "Импортировать файл в программу");
             buttonImport_NFA.UseVisualStyleBackColor = false;
             buttonImport_NFA.Click += buttonImport_NFA_Click;
             buttonImport_NFA.MouseEnter += buttonImport_NFA_MouseEnter;
@@ -178,7 +184,7 @@
             tabPageMain_NFA.Location = new Point(4, 24);
             tabPageMain_NFA.Name = "tabPageMain_NFA";
             tabPageMain_NFA.Padding = new Padding(3);
-            tabPageMain_NFA.Size = new Size(976, 128);
+            tabPageMain_NFA.Size = new Size(876, 128);
             tabPageMain_NFA.TabIndex = 1;
             tabPageMain_NFA.Text = "Главная";
             tabPageMain_NFA.UseVisualStyleBackColor = true;
@@ -208,8 +214,10 @@
             buttonSearch_NFA.Name = "buttonSearch_NFA";
             buttonSearch_NFA.Size = new Size(34, 34);
             buttonSearch_NFA.TabIndex = 1;
+            toolTip_NFA.SetToolTip(buttonSearch_NFA, "Поиск");
             buttonSearch_NFA.UseVisualStyleBackColor = false;
             buttonSearch_NFA.Click += button1_Click;
+            buttonSearch_NFA.MouseEnter += buttonSearch_NFA_MouseEnter;
             buttonSearch_NFA.MouseHover += buttonSearch_NFA_MouseHover;
             // 
             // textBoxSearch_NFA
@@ -248,7 +256,6 @@
             labelRemoveRow_NFA.TabIndex = 3;
             labelRemoveRow_NFA.Text = "Удалить \r\nстроку";
             labelRemoveRow_NFA.TextAlign = ContentAlignment.MiddleCenter;
-            labelRemoveRow_NFA.Click += label2_Click;
             // 
             // labelAddRow_NFA
             // 
@@ -272,8 +279,8 @@
             buttonRemoveRow_NFA.Name = "buttonRemoveRow_NFA";
             buttonRemoveRow_NFA.Size = new Size(64, 64);
             buttonRemoveRow_NFA.TabIndex = 1;
+            toolTip_NFA.SetToolTip(buttonRemoveRow_NFA, "Удалить выбранную строку");
             buttonRemoveRow_NFA.UseVisualStyleBackColor = false;
-            buttonRemoveRow_NFA.ClientSizeChanged += buttonRemoveRow_NFA_ClientSizeChanged;
             buttonRemoveRow_NFA.Click += buttonRemoveRow_NFA_Click;
             buttonRemoveRow_NFA.MouseEnter += buttonRemoveRow_NFA_MouseEnter;
             buttonRemoveRow_NFA.MouseHover += buttonRemoveRow_NFA_MouseHover;
@@ -290,6 +297,7 @@
             buttonAddRow_NFA.Name = "buttonAddRow_NFA";
             buttonAddRow_NFA.Size = new Size(64, 64);
             buttonAddRow_NFA.TabIndex = 1;
+            toolTip_NFA.SetToolTip(buttonAddRow_NFA, "Добавить новую строку");
             buttonAddRow_NFA.UseVisualStyleBackColor = false;
             buttonAddRow_NFA.Click += buttonAddRow_NFA_Click;
             buttonAddRow_NFA.MouseEnter += buttonAddRow_NFA_MouseEnter;
@@ -301,19 +309,18 @@
             tabPageInformation_NFA.Location = new Point(4, 24);
             tabPageInformation_NFA.Name = "tabPageInformation_NFA";
             tabPageInformation_NFA.Padding = new Padding(3);
-            tabPageInformation_NFA.Size = new Size(976, 128);
+            tabPageInformation_NFA.Size = new Size(876, 128);
             tabPageInformation_NFA.TabIndex = 2;
             tabPageInformation_NFA.Text = "О программе";
             // 
             // panelGrid_NFA
             // 
             panelGrid_NFA.AutoScroll = true;
-            panelGrid_NFA.AutoSize = true;
             panelGrid_NFA.Controls.Add(dataGridViewMainGrid_NFA);
             panelGrid_NFA.Dock = DockStyle.Fill;
             panelGrid_NFA.Location = new Point(0, 156);
             panelGrid_NFA.Name = "panelGrid_NFA";
-            panelGrid_NFA.Size = new Size(984, 505);
+            panelGrid_NFA.Size = new Size(884, 305);
             panelGrid_NFA.TabIndex = 1;
             // 
             // dataGridViewMainGrid_NFA
@@ -322,15 +329,16 @@
             dataGridViewMainGrid_NFA.AllowUserToDeleteRows = false;
             dataGridViewMainGrid_NFA.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCellsExceptHeader;
             dataGridViewMainGrid_NFA.BackgroundColor = Color.White;
+            dataGridViewMainGrid_NFA.BorderStyle = BorderStyle.None;
             dataGridViewMainGrid_NFA.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridViewMainGrid_NFA.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = SystemColors.Control;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridViewMainGrid_NFA.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridViewMainGrid_NFA.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewMainGrid_NFA.Columns.AddRange(new DataGridViewColumn[] { ColumnID_NFA, ColumnName_NFA, ColumnNumber_NFA, ColumnSubject_NFA, ColumnAge_NFA, ColumnAudienceNumber_NFA, ColumnExperience_NFA, ColumnHoursPerWeek_NFA });
             dataGridViewMainGrid_NFA.Dock = DockStyle.Fill;
@@ -338,9 +346,12 @@
             dataGridViewMainGrid_NFA.Location = new Point(0, 0);
             dataGridViewMainGrid_NFA.Name = "dataGridViewMainGrid_NFA";
             dataGridViewMainGrid_NFA.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            dataGridViewMainGrid_NFA.Size = new Size(984, 505);
+            dataGridViewMainGrid_NFA.Size = new Size(884, 305);
             dataGridViewMainGrid_NFA.TabIndex = 0;
-            dataGridViewMainGrid_NFA.CellContentClick += dataGridView1_CellContentClick;
+            dataGridViewMainGrid_NFA.CellBeginEdit += dataGridViewMainGrid_NFA_CellBeginEdit;
+            dataGridViewMainGrid_NFA.CellValidating += dataGridViewMainGrid_NFA_CellValidating;
+            dataGridViewMainGrid_NFA.SelectionChanged += dataGridViewMainGrid_NFA_SelectionChanged;
+            dataGridViewMainGrid_NFA.KeyDown += dataGridViewMainGrid_NFA_KeyDown;
             // 
             // ColumnID_NFA
             // 
@@ -421,18 +432,49 @@
             toolTip_NFA.ToolTipIcon = ToolTipIcon.Info;
             toolTip_NFA.ToolTipTitle = "Подсказка";
             // 
+            // labelSelected_NFA
+            // 
+            labelSelected_NFA.Location = new Point(13, 3);
+            labelSelected_NFA.Name = "labelSelected_NFA";
+            labelSelected_NFA.Size = new Size(85, 15);
+            labelSelected_NFA.TabIndex = 0;
+            labelSelected_NFA.Text = "Выбрано: ";
+            labelSelected_NFA.Visible = false;
+            // 
+            // panelStatistics_NFA
+            // 
+            panelStatistics_NFA.Controls.Add(labelAvg_NFA);
+            panelStatistics_NFA.Controls.Add(labelSelected_NFA);
+            panelStatistics_NFA.Dock = DockStyle.Bottom;
+            panelStatistics_NFA.Location = new Point(0, 439);
+            panelStatistics_NFA.Margin = new Padding(0);
+            panelStatistics_NFA.Name = "panelStatistics_NFA";
+            panelStatistics_NFA.Padding = new Padding(5);
+            panelStatistics_NFA.Size = new Size(884, 22);
+            panelStatistics_NFA.TabIndex = 1;
+            // 
+            // labelAvg_NFA
+            // 
+            labelAvg_NFA.Location = new Point(104, 3);
+            labelAvg_NFA.Name = "labelAvg_NFA";
+            labelAvg_NFA.Size = new Size(85, 15);
+            labelAvg_NFA.TabIndex = 0;
+            labelAvg_NFA.Text = "Среднее: ";
+            labelAvg_NFA.Visible = false;
+            // 
             // FormMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
-            ClientSize = new Size(984, 661);
+            ClientSize = new Size(884, 461);
+            Controls.Add(panelStatistics_NFA);
             Controls.Add(panelGrid_NFA);
             Controls.Add(panelMenu_NFA);
-            MinimumSize = new Size(1000, 700);
+            MinimumSize = new Size(900, 500);
             Name = "FormMain";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Преподавтели Университета";
+            Text = "Преподаватели Университета";
             Load += FormMain_Load;
             panelMenu_NFA.ResumeLayout(false);
             TabBarNavigation_NFA.ResumeLayout(false);
@@ -446,8 +488,8 @@
             groupBoxEdit_NFA.PerformLayout();
             panelGrid_NFA.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridViewMainGrid_NFA).EndInit();
+            panelStatistics_NFA.ResumeLayout(false);
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -484,5 +526,8 @@
         private TextBox textBoxSearch_NFA;
         private Button buttonSearch_NFA;
         private ToolTip toolTip_NFA;
+        private Label labelSelected_NFA;
+        private Panel panelStatistics_NFA;
+        private Label labelAvg_NFA;
     }
 }

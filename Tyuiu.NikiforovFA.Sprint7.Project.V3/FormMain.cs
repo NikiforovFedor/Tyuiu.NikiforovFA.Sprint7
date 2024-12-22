@@ -14,27 +14,13 @@ namespace Tyuiu.NikiforovFA.Sprint7.Project.V3
         int rows;
         int columns;
         string OpenFilePath = "";
-
-        private void AddRow_Click(object sender, EventArgs e)
-        {
-            DataGridViewRow row = new DataGridViewRow();
-            dataGridViewMainGrid_NFA.Rows.Add(row);
-        }
-        private void dataGridViewMainGrid_NFA_MouseDown(object sender, EventArgs e)
-        {
-
-        }
+        List<DataGridViewRow> DeletedRows = new List<DataGridViewRow>();
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            TabBarNavigation_NFA.SelectedIndex = 1;
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
+            TabBarNavigation_NFA.SelectedIndex = 0;
 
         }
-
         private void buttonExport_NFA_Click(object sender, EventArgs e)
         {
             saveFileDialogExport_NFA.FileName = "OutputSprint7.csv";
@@ -110,58 +96,27 @@ namespace Tyuiu.NikiforovFA.Sprint7.Project.V3
                 buttonRemoveRow_NFA.Enabled = true;
                 textBoxSearch_NFA.Enabled = true;
                 buttonSearch_NFA.Enabled = true;
+                TabBarNavigation_NFA.SelectedIndex = 1;
             }
             catch
             {
                 MessageBox.Show("Некорректный файл!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void toolTipImport_NFA_Popup(object sender, PopupEventArgs e)
-        {
-
-        }
-
-        private void buttonImport_NFA_MouseEnter(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void buttonExport_NFA_MouseEnter(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void buttonAddRow_NFA_MouseEnter(object sender, EventArgs e)
-        {
-
-        }
-
         private void buttonAddRow_NFA_Click(object sender, EventArgs e)
         {
-            dataGridViewMainGrid_NFA.Rows.Insert(0);
+            DataGridViewRow row = new DataGridViewRow();
+            row.CreateCells(dataGridViewMainGrid_NFA);
+            row.Cells[0].Value = "0";
+            row.Cells[1].Value = "Фамилия Имя Отчество";
+            row.Cells[2].Value = "0";
+            row.Cells[3].Value = "Дисциплина";
+            row.Cells[4].Value = "0";
+            row.Cells[5].Value = "0";
+            row.Cells[6].Value = "0";
+            row.Cells[7].Value = "0";
+            dataGridViewMainGrid_NFA.Rows.Insert(0, row);
         }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void buttonRemoveRow_NFA_MouseEnter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void buttonRemoveRow_NFA_ClientSizeChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void buttonRemoveRow_NFA_Click(object sender, EventArgs e)
         {
             if (dataGridViewMainGrid_NFA.SelectedRows.Count > 0)
@@ -176,10 +131,6 @@ namespace Tyuiu.NikiforovFA.Sprint7.Project.V3
                 MessageBox.Show("Пожалуйста, выберите строку для удаления", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void labelAddRow_NFA_MouseEnter(object sender, EventArgs e)
-        {
-
-        }
 
         private void tabPageMain_NFA_Click(object sender, EventArgs e)
         {
@@ -188,27 +139,34 @@ namespace Tyuiu.NikiforovFA.Sprint7.Project.V3
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string request = textBoxSearch_NFA.Text.ToLower();
-
-            dataGridViewMainGrid_NFA.ClearSelection();
-
-            foreach (DataGridViewRow row in dataGridViewMainGrid_NFA.Rows)
+            try
             {
-                bool visible = false;
+                string request = textBoxSearch_NFA.Text.ToLower();
 
-                if (!row.IsNewRow)
+                dataGridViewMainGrid_NFA.ClearSelection();
+
+                foreach (DataGridViewRow row in dataGridViewMainGrid_NFA.Rows)
                 {
-                    foreach (DataGridViewCell Cell in row.Cells)
+                    bool visible = false;
+
+                    if (!row.IsNewRow)
                     {
-                        if (Cell.Value != null && Cell.Value.ToString().ToLower().Contains(request))
+                        foreach (DataGridViewCell Cell in row.Cells)
                         {
-                            visible = true;
-                            break;
+                            if (Cell.Value != null && Cell.Value.ToString().ToLower().Contains(request))
+                            {
+                                visible = true;
+                                break;
+                            }
                         }
                     }
-                }
 
-                row.Visible = visible;
+                    row.Visible = visible;
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка запроса", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -233,33 +191,114 @@ namespace Tyuiu.NikiforovFA.Sprint7.Project.V3
             if (e.KeyCode == Keys.Enter)
             {
                 button1_Click(sender, e);
-
             }
         }
 
         private void buttonRemoveRow_NFA_MouseHover(object sender, EventArgs e)
         {
-            toolTip_NFA.ToolTipTitle = "Удалить строку";
+            //toolTip_NFA.ToolTipTitle = "Удалить строку";
         }
 
         private void buttonAddRow_NFA_MouseHover(object sender, EventArgs e)
         {
-            toolTip_NFA.ToolTipTitle = "Добавить строку";
+            //toolTip_NFA.ToolTipTitle = "Добавить строку";
         }
 
         private void buttonSearch_NFA_MouseHover(object sender, EventArgs e)
         {
-            toolTip_NFA.ToolTipTitle = "Начать поиск";
+            //toolTip_NFA.ToolTipTitle = "Начать поиск";
         }
 
         private void buttonImport_NFA_MouseHover(object sender, EventArgs e)
         {
-            toolTip_NFA.ToolTipTitle = "Импортировать файл";
+            //toolTip_NFA.ToolTipTitle = "Импортировать файл";
         }
 
         private void buttonExport_NFA_MouseHover(object sender, EventArgs e)
         {
-            toolTip_NFA.ToolTipTitle = "Экпортировать файл";
+            //toolTip_NFA.ToolTipTitle = "Экпортировать файл";
+        }
+
+        private void dataGridViewMainGrid_NFA_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (dataGridViewMainGrid_NFA.SelectedRows.Count > 0)
+            {
+                if (e.KeyCode == Keys.Delete)
+                {
+                    buttonRemoveRow_NFA_Click(sender, e);
+                }
+            }
+        }
+
+        private void dataGridViewMainGrid_NFA_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            if (dataGridViewMainGrid_NFA.SelectedRows.Count > 0)
+            {
+                e.Cancel = true;
+            }
+        }
+
+        private void buttonImport_NFA_MouseEnter(object sender, EventArgs e)
+        {
+            toolTip_NFA.ToolTipIcon = ToolTipIcon.Info;
+        }
+
+        private void buttonExport_NFA_MouseEnter(object sender, EventArgs e)
+        {
+            toolTip_NFA.ToolTipIcon = ToolTipIcon.Info;
+        }
+
+        private void buttonAddRow_NFA_MouseEnter(object sender, EventArgs e)
+        {
+            toolTip_NFA.ToolTipIcon = ToolTipIcon.Info;
+        }
+
+        private void buttonRemoveRow_NFA_MouseEnter(object sender, EventArgs e)
+        {
+            toolTip_NFA.ToolTipIcon = ToolTipIcon.Info;
+        }
+
+        private void buttonSearch_NFA_MouseEnter(object sender, EventArgs e)
+        {
+            toolTip_NFA.ToolTipIcon = ToolTipIcon.Info;
+        }
+
+        private void dataGridViewMainGrid_NFA_SelectionChanged(object sender, EventArgs e)
+        {
+            labelSelected_NFA.Text = "Выбрано: " + (dataGridViewMainGrid_NFA.SelectedCells.Count).ToString();
+            labelSelected_NFA.Visible = true;
+
+            //double sum = 0;
+
+            //foreach (DataGridViewRow row in dataGridViewMainGrid_NFA.SelectedRows)
+            //{
+            //    foreach (DataGridViewCell cell in row.Cells)
+            //    {
+            //        if (double.TryParse(cell.Value.ToString(), out double value))
+            //        {
+            //            sum += value;
+            //        }
+            //    }
+                    
+            //}
+            //labelAvg_NFA.Text = "Среднее: " + (sum/(dataGridViewMainGrid_NFA.SelectedCells.Count)).ToString();
+            //labelAvg_NFA.Visible = true;
+
+        }
+
+        private void dataGridViewMainGrid_NFA_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            string col = "024567";
+            if (col.Contains(e.ColumnIndex.ToString()) && !long.TryParse(e.FormattedValue.ToString(), out _))
+            {
+                e.Cancel = true;
+                MessageBox.Show("Пожалуйста, введите число в этом столбце.", "Ошибка ввода", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            if (!(col.Contains(e.ColumnIndex.ToString())) && !char.IsLetter(e.FormattedValue.ToString().FirstOrDefault()))
+            {
+                e.Cancel = true;
+                MessageBox.Show("Пожалуйста, введите буквы в этом столбце.", "Ошибка ввода", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
