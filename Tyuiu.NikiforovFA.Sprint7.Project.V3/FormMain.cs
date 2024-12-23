@@ -14,11 +14,15 @@ namespace Tyuiu.NikiforovFA.Sprint7.Project.V3
         int rows;
         int columns;
         string OpenFilePath = "";
-        List<DataGridViewRow> DeletedRows = new List<DataGridViewRow>();
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            TabBarNavigation_NFA.SelectedIndex = 0;
+            
+        }
+
+        public DataGridView GetDataGridView()
+        {
+            return dataGridViewMainGrid_NFA;
 
         }
         private void buttonExport_NFA_Click(object sender, EventArgs e)
@@ -66,6 +70,14 @@ namespace Tyuiu.NikiforovFA.Sprint7.Project.V3
                 OpenFilePath = openFileDialogImport_NFA.FileName;
                 string[,] array = ds.OpenFile(OpenFilePath);
                 dataGridViewMainGrid_NFA.Columns[0].ValueType = typeof(int);
+                dataGridViewMainGrid_NFA.Columns[1].ValueType = typeof(string);
+                dataGridViewMainGrid_NFA.Columns[2].ValueType = typeof(long);
+                dataGridViewMainGrid_NFA.Columns[3].ValueType = typeof(string);
+                dataGridViewMainGrid_NFA.Columns[4].ValueType = typeof(int);
+                dataGridViewMainGrid_NFA.Columns[5].ValueType = typeof(int);
+                dataGridViewMainGrid_NFA.Columns[6].ValueType = typeof(int);
+                dataGridViewMainGrid_NFA.Columns[7].ValueType = typeof(int);
+
                 rows = array.GetLength(0);
                 columns = array.GetLength(1);
 
@@ -96,7 +108,9 @@ namespace Tyuiu.NikiforovFA.Sprint7.Project.V3
                 buttonRemoveRow_NFA.Enabled = true;
                 textBoxSearch_NFA.Enabled = true;
                 buttonSearch_NFA.Enabled = true;
+                buttonMore_NFA.Enabled = true;
                 TabBarNavigation_NFA.SelectedIndex = 1;
+
             }
             catch
             {
@@ -106,16 +120,8 @@ namespace Tyuiu.NikiforovFA.Sprint7.Project.V3
         private void buttonAddRow_NFA_Click(object sender, EventArgs e)
         {
             DataGridViewRow row = new DataGridViewRow();
-            row.CreateCells(dataGridViewMainGrid_NFA);
-            row.Cells[0].Value = "0";
-            row.Cells[1].Value = "Фамилия Имя Отчество";
-            row.Cells[2].Value = "0";
-            row.Cells[3].Value = "Дисциплина";
-            row.Cells[4].Value = "0";
-            row.Cells[5].Value = "0";
-            row.Cells[6].Value = "0";
-            row.Cells[7].Value = "0";
             dataGridViewMainGrid_NFA.Rows.Insert(0, row);
+            dataGridViewMainGrid_NFA.Height += 21;
         }
         private void buttonRemoveRow_NFA_Click(object sender, EventArgs e)
         {
@@ -268,20 +274,17 @@ namespace Tyuiu.NikiforovFA.Sprint7.Project.V3
             labelSelected_NFA.Text = "Выбрано: " + (dataGridViewMainGrid_NFA.SelectedCells.Count).ToString();
             labelSelected_NFA.Visible = true;
 
-            //double sum = 0;
 
-            //foreach (DataGridViewRow row in dataGridViewMainGrid_NFA.SelectedRows)
+            //var selectedCells = dataGridViewMainGrid_NFA.SelectedCells;
+            //double sum = 0;
+            //foreach (DataGridViewCell cell in selectedCells)
             //{
-            //    foreach (DataGridViewCell cell in row.Cells)
-            //    {
             //        if (double.TryParse(cell.Value.ToString(), out double value))
             //        {
             //            sum += value;
             //        }
-            //    }
-                    
             //}
-            //labelAvg_NFA.Text = "Среднее: " + (sum/(dataGridViewMainGrid_NFA.SelectedCells.Count)).ToString();
+            //labelAvg_NFA.Text = "Среднее: " + (sum / (dataGridViewMainGrid_NFA.SelectedCells.Count)).ToString();
             //labelAvg_NFA.Visible = true;
 
         }
@@ -299,6 +302,17 @@ namespace Tyuiu.NikiforovFA.Sprint7.Project.V3
                 e.Cancel = true;
                 MessageBox.Show("Пожалуйста, введите буквы в этом столбце.", "Ошибка ввода", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void dataGridViewMainGrid_NFA_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void buttonMore_NFA_Click(object sender, EventArgs e)
+        {
+            FormMore formMore = new FormMore();
+            formMore.ShowDialog();
         }
     }
 }

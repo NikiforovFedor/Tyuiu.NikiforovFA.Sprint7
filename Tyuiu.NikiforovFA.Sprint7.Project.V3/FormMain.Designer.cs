@@ -30,7 +30,7 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             panelMenu_NFA = new Panel();
             TabBarNavigation_NFA = new TabControl();
             tabPageFile_NFA = new TabPage();
@@ -62,6 +62,7 @@
             openFileDialogImport_NFA = new OpenFileDialog();
             saveFileDialogExport_NFA = new SaveFileDialog();
             toolTip_NFA = new ToolTip(components);
+            buttonMore_NFA = new Button();
             labelSelected_NFA = new Label();
             panelStatistics_NFA = new Panel();
             labelAvg_NFA = new Label();
@@ -320,7 +321,7 @@
             panelGrid_NFA.Dock = DockStyle.Fill;
             panelGrid_NFA.Location = new Point(0, 156);
             panelGrid_NFA.Name = "panelGrid_NFA";
-            panelGrid_NFA.Size = new Size(884, 305);
+            panelGrid_NFA.Size = new Size(884, 281);
             panelGrid_NFA.TabIndex = 1;
             // 
             // dataGridViewMainGrid_NFA
@@ -331,14 +332,14 @@
             dataGridViewMainGrid_NFA.BackgroundColor = Color.White;
             dataGridViewMainGrid_NFA.BorderStyle = BorderStyle.None;
             dataGridViewMainGrid_NFA.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = SystemColors.Control;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dataGridViewMainGrid_NFA.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridViewMainGrid_NFA.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewMainGrid_NFA.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewMainGrid_NFA.Columns.AddRange(new DataGridViewColumn[] { ColumnID_NFA, ColumnName_NFA, ColumnNumber_NFA, ColumnSubject_NFA, ColumnAge_NFA, ColumnAudienceNumber_NFA, ColumnExperience_NFA, ColumnHoursPerWeek_NFA });
             dataGridViewMainGrid_NFA.Dock = DockStyle.Fill;
@@ -346,9 +347,10 @@
             dataGridViewMainGrid_NFA.Location = new Point(0, 0);
             dataGridViewMainGrid_NFA.Name = "dataGridViewMainGrid_NFA";
             dataGridViewMainGrid_NFA.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            dataGridViewMainGrid_NFA.Size = new Size(884, 305);
+            dataGridViewMainGrid_NFA.Size = new Size(884, 281);
             dataGridViewMainGrid_NFA.TabIndex = 0;
             dataGridViewMainGrid_NFA.CellBeginEdit += dataGridViewMainGrid_NFA_CellBeginEdit;
+            dataGridViewMainGrid_NFA.CellEndEdit += dataGridViewMainGrid_NFA_CellEndEdit;
             dataGridViewMainGrid_NFA.CellValidating += dataGridViewMainGrid_NFA_CellValidating;
             dataGridViewMainGrid_NFA.SelectionChanged += dataGridViewMainGrid_NFA_SelectionChanged;
             dataGridViewMainGrid_NFA.KeyDown += dataGridViewMainGrid_NFA_KeyDown;
@@ -432,6 +434,22 @@
             toolTip_NFA.ToolTipIcon = ToolTipIcon.Info;
             toolTip_NFA.ToolTipTitle = "Подсказка";
             // 
+            // buttonMore_NFA
+            // 
+            buttonMore_NFA.Cursor = Cursors.Hand;
+            buttonMore_NFA.Enabled = false;
+            buttonMore_NFA.FlatStyle = FlatStyle.Popup;
+            buttonMore_NFA.Font = new Font("Segoe UI", 7F);
+            buttonMore_NFA.Image = (Image)resources.GetObject("buttonMore_NFA.Image");
+            buttonMore_NFA.Location = new Point(863, 0);
+            buttonMore_NFA.Margin = new Padding(0);
+            buttonMore_NFA.Name = "buttonMore_NFA";
+            buttonMore_NFA.Size = new Size(21, 23);
+            buttonMore_NFA.TabIndex = 1;
+            toolTip_NFA.SetToolTip(buttonMore_NFA, "Дополнительные сведения");
+            buttonMore_NFA.UseVisualStyleBackColor = true;
+            buttonMore_NFA.Click += buttonMore_NFA_Click;
+            // 
             // labelSelected_NFA
             // 
             labelSelected_NFA.Location = new Point(13, 3);
@@ -443,14 +461,15 @@
             // 
             // panelStatistics_NFA
             // 
+            panelStatistics_NFA.Controls.Add(buttonMore_NFA);
             panelStatistics_NFA.Controls.Add(labelAvg_NFA);
             panelStatistics_NFA.Controls.Add(labelSelected_NFA);
             panelStatistics_NFA.Dock = DockStyle.Bottom;
-            panelStatistics_NFA.Location = new Point(0, 439);
+            panelStatistics_NFA.Location = new Point(0, 437);
             panelStatistics_NFA.Margin = new Padding(0);
             panelStatistics_NFA.Name = "panelStatistics_NFA";
             panelStatistics_NFA.Padding = new Padding(5);
-            panelStatistics_NFA.Size = new Size(884, 22);
+            panelStatistics_NFA.Size = new Size(884, 24);
             panelStatistics_NFA.TabIndex = 1;
             // 
             // labelAvg_NFA
@@ -468,9 +487,9 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             ClientSize = new Size(884, 461);
-            Controls.Add(panelStatistics_NFA);
             Controls.Add(panelGrid_NFA);
             Controls.Add(panelMenu_NFA);
+            Controls.Add(panelStatistics_NFA);
             MinimumSize = new Size(900, 500);
             Name = "FormMain";
             StartPosition = FormStartPosition.CenterScreen;
@@ -496,23 +515,8 @@
 
         private Panel panelMenu_NFA;
         private Panel panelGrid_NFA;
-        private TabControl TabBarNavigation_NFA;
-        private TabPage tabPageFile_NFA;
-        private TabPage tabPageMain_NFA;
-
-        private Button buttonImport_NFA;
-        private Button buttonExport_NFA;
-        private Label labelExport_NFA;
-        private Label labelImport_NFA;
-        private GroupBox groupBoxEdit_NFA;
         private OpenFileDialog openFileDialogImport_NFA;
         private SaveFileDialog saveFileDialogExport_NFA;
-        private TabPage tabPageInformation_NFA;
-        private GroupBox groupBoxFile_NFA;
-        private Button buttonAddRow_NFA;
-        private Button buttonRemoveRow_NFA;
-        private Label labelRemoveRow_NFA;
-        private System.Windows.Forms.Label labelAddRow_NFA;
         private DataGridView dataGridViewMainGrid_NFA;
         private DataGridViewTextBoxColumn ColumnID_NFA;
         private DataGridViewTextBoxColumn ColumnName_NFA;
@@ -522,12 +526,27 @@
         private DataGridViewTextBoxColumn ColumnAudienceNumber_NFA;
         private DataGridViewTextBoxColumn ColumnExperience_NFA;
         private DataGridViewTextBoxColumn ColumnHoursPerWeek_NFA;
-        private GroupBox groupBoxSearch_NFA;
-        private TextBox textBoxSearch_NFA;
-        private Button buttonSearch_NFA;
         private ToolTip toolTip_NFA;
         private Label labelSelected_NFA;
         private Panel panelStatistics_NFA;
+        private TabControl TabBarNavigation_NFA;
+        private TabPage tabPageFile_NFA;
+        private GroupBox groupBoxFile_NFA;
+        private Button buttonExport_NFA;
+        private Label labelExport_NFA;
+        private Label labelImport_NFA;
+        private Button buttonImport_NFA;
+        private TabPage tabPageMain_NFA;
+        private GroupBox groupBoxSearch_NFA;
+        private Button buttonSearch_NFA;
+        private TextBox textBoxSearch_NFA;
+        private GroupBox groupBoxEdit_NFA;
+        private Label labelRemoveRow_NFA;
+        private Label labelAddRow_NFA;
+        private Button buttonRemoveRow_NFA;
+        private Button buttonAddRow_NFA;
+        private TabPage tabPageInformation_NFA;
+        private Button buttonMore_NFA;
         private Label labelAvg_NFA;
     }
 }
