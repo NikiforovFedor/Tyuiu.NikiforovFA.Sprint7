@@ -311,7 +311,7 @@ namespace Tyuiu.NikiforovFA.Sprint7.Project.V3
 
         private void buttonMore_NFA_Click(object sender, EventArgs e)
         {
-            FormMore formMore = new FormMore();
+            FormStatistics formMore = new FormStatistics(dataGridViewMainGrid_NFA);
             formMore.ShowDialog();
         }
     }

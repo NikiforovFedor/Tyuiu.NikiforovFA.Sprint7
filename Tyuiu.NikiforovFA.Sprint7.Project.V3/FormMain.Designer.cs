@@ -66,6 +66,7 @@
             labelSelected_NFA = new Label();
             panelStatistics_NFA = new Panel();
             labelAvg_NFA = new Label();
+            groupBoxInformation_NFA = new GroupBox();
             panelMenu_NFA.SuspendLayout();
             TabBarNavigation_NFA.SuspendLayout();
             tabPageFile_NFA.SuspendLayout();
@@ -73,6 +74,7 @@
             tabPageMain_NFA.SuspendLayout();
             groupBoxSearch_NFA.SuspendLayout();
             groupBoxEdit_NFA.SuspendLayout();
+            tabPageInformation_NFA.SuspendLayout();
             panelGrid_NFA.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewMainGrid_NFA).BeginInit();
             panelStatistics_NFA.SuspendLayout();
@@ -196,10 +198,10 @@
             groupBoxSearch_NFA.BackColor = Color.LightGray;
             groupBoxSearch_NFA.Controls.Add(buttonSearch_NFA);
             groupBoxSearch_NFA.Controls.Add(textBoxSearch_NFA);
-            groupBoxSearch_NFA.Dock = DockStyle.Left;
+            groupBoxSearch_NFA.Dock = DockStyle.Fill;
             groupBoxSearch_NFA.Location = new Point(150, 3);
             groupBoxSearch_NFA.Name = "groupBoxSearch_NFA";
-            groupBoxSearch_NFA.Size = new Size(200, 122);
+            groupBoxSearch_NFA.Size = new Size(723, 122);
             groupBoxSearch_NFA.TabIndex = 1;
             groupBoxSearch_NFA.TabStop = false;
             groupBoxSearch_NFA.Text = "Поиск";
@@ -307,6 +309,7 @@
             // tabPageInformation_NFA
             // 
             tabPageInformation_NFA.BackColor = Color.LightGray;
+            tabPageInformation_NFA.Controls.Add(groupBoxInformation_NFA);
             tabPageInformation_NFA.Location = new Point(4, 24);
             tabPageInformation_NFA.Name = "tabPageInformation_NFA";
             tabPageInformation_NFA.Padding = new Padding(3);
@@ -481,6 +484,16 @@
             labelAvg_NFA.Text = "Среднее: ";
             labelAvg_NFA.Visible = false;
             // 
+            // groupBoxInformation_NFA
+            // 
+            groupBoxInformation_NFA.Dock = DockStyle.Left;
+            groupBoxInformation_NFA.Location = new Point(3, 3);
+            groupBoxInformation_NFA.Name = "groupBoxInformation_NFA";
+            groupBoxInformation_NFA.Size = new Size(200, 122);
+            groupBoxInformation_NFA.TabIndex = 0;
+            groupBoxInformation_NFA.TabStop = false;
+            groupBoxInformation_NFA.Text = "Разработчик";
+            // 
             // FormMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -505,6 +518,7 @@
             groupBoxSearch_NFA.PerformLayout();
             groupBoxEdit_NFA.ResumeLayout(false);
             groupBoxEdit_NFA.PerformLayout();
+            tabPageInformation_NFA.ResumeLayout(false);
             panelGrid_NFA.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridViewMainGrid_NFA).EndInit();
             panelStatistics_NFA.ResumeLayout(false);
@@ -548,5 +562,6 @@
         private TabPage tabPageInformation_NFA;
         private Button buttonMore_NFA;
         private Label labelAvg_NFA;
+        private GroupBox groupBoxInformation_NFA;
     }
 }
