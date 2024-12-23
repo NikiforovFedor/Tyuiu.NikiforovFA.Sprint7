@@ -56,6 +56,7 @@
             textBox1.ScrollBars = ScrollBars.Vertical;
             textBox1.Size = new Size(578, 369);
             textBox1.TabIndex = 0;
+            textBox1.TabStop = false;
             textBox1.Text = resources.GetString("textBox1.Text");
             // 
             // FormUserGuide

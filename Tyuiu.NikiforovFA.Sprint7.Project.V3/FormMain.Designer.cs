@@ -420,6 +420,7 @@
             dataGridViewMainGrid_NFA.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             dataGridViewMainGrid_NFA.Size = new Size(884, 281);
             dataGridViewMainGrid_NFA.TabIndex = 0;
+            dataGridViewMainGrid_NFA.TabStop = false;
             dataGridViewMainGrid_NFA.CellBeginEdit += dataGridViewMainGrid_NFA_CellBeginEdit;
             dataGridViewMainGrid_NFA.CellEndEdit += dataGridViewMainGrid_NFA_CellEndEdit;
             dataGridViewMainGrid_NFA.CellValidating += dataGridViewMainGrid_NFA_CellValidating;
