@@ -51,7 +51,7 @@
             groupBoxData_NFA.Controls.Add(labelCount_NFA);
             groupBoxData_NFA.Location = new Point(12, 12);
             groupBoxData_NFA.Name = "groupBoxData_NFA";
-            groupBoxData_NFA.Size = new Size(201, 263);
+            groupBoxData_NFA.Size = new Size(201, 367);
             groupBoxData_NFA.TabIndex = 0;
             groupBoxData_NFA.TabStop = false;
             groupBoxData_NFA.Text = "Данные";
@@ -115,7 +115,7 @@
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             chartExpAge_NFA.Series.Add(series1);
-            chartExpAge_NFA.Size = new Size(300, 263);
+            chartExpAge_NFA.Size = new Size(353, 367);
             chartExpAge_NFA.TabIndex = 1;
             chartExpAge_NFA.Text = "Зависимость стажа от возраста";
             chartExpAge_NFA.Click += chartExpAge_NFA_Click;
@@ -124,12 +124,12 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(524, 276);
+            ClientSize = new Size(584, 391);
             Controls.Add(chartExpAge_NFA);
             Controls.Add(groupBoxData_NFA);
             MaximizeBox = false;
-            MaximumSize = new Size(540, 315);
-            MinimumSize = new Size(540, 315);
+            MaximumSize = new Size(600, 430);
+            MinimumSize = new Size(600, 430);
             Name = "FormStatistics";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Статистика";

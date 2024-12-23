@@ -49,6 +49,11 @@
             buttonRemoveRow_NFA = new Button();
             buttonAddRow_NFA = new Button();
             tabPageInformation_NFA = new TabPage();
+            groupBoxInformation_NFA = new GroupBox();
+            buttonGuide_NFA = new Button();
+            labelHelp_NFA = new Label();
+            label1 = new Label();
+            buttonВeveloper_NFA = new Button();
             panelGrid_NFA = new Panel();
             dataGridViewMainGrid_NFA = new DataGridView();
             ColumnID_NFA = new DataGridViewTextBoxColumn();
@@ -66,7 +71,6 @@
             labelSelected_NFA = new Label();
             panelStatistics_NFA = new Panel();
             labelAvg_NFA = new Label();
-            groupBoxInformation_NFA = new GroupBox();
             panelMenu_NFA.SuspendLayout();
             TabBarNavigation_NFA.SuspendLayout();
             tabPageFile_NFA.SuspendLayout();
@@ -75,6 +79,7 @@
             groupBoxSearch_NFA.SuspendLayout();
             groupBoxEdit_NFA.SuspendLayout();
             tabPageInformation_NFA.SuspendLayout();
+            groupBoxInformation_NFA.SuspendLayout();
             panelGrid_NFA.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewMainGrid_NFA).BeginInit();
             panelStatistics_NFA.SuspendLayout();
@@ -317,6 +322,69 @@
             tabPageInformation_NFA.TabIndex = 2;
             tabPageInformation_NFA.Text = "О программе";
             // 
+            // groupBoxInformation_NFA
+            // 
+            groupBoxInformation_NFA.Controls.Add(buttonGuide_NFA);
+            groupBoxInformation_NFA.Controls.Add(labelHelp_NFA);
+            groupBoxInformation_NFA.Controls.Add(label1);
+            groupBoxInformation_NFA.Controls.Add(buttonВeveloper_NFA);
+            groupBoxInformation_NFA.Dock = DockStyle.Left;
+            groupBoxInformation_NFA.Location = new Point(3, 3);
+            groupBoxInformation_NFA.Name = "groupBoxInformation_NFA";
+            groupBoxInformation_NFA.Size = new Size(157, 122);
+            groupBoxInformation_NFA.TabIndex = 0;
+            groupBoxInformation_NFA.TabStop = false;
+            groupBoxInformation_NFA.Text = "О разработке";
+            // 
+            // buttonGuide_NFA
+            // 
+            buttonGuide_NFA.BackColor = Color.White;
+            buttonGuide_NFA.BackgroundImageLayout = ImageLayout.None;
+            buttonGuide_NFA.Cursor = Cursors.Hand;
+            buttonGuide_NFA.FlatStyle = FlatStyle.Popup;
+            buttonGuide_NFA.Image = (Image)resources.GetObject("buttonGuide_NFA.Image");
+            buttonGuide_NFA.Location = new Point(76, 22);
+            buttonGuide_NFA.Name = "buttonGuide_NFA";
+            buttonGuide_NFA.Size = new Size(64, 64);
+            buttonGuide_NFA.TabIndex = 2;
+            buttonGuide_NFA.UseVisualStyleBackColor = false;
+            buttonGuide_NFA.Click += buttonGuide_NFA_Click;
+            // 
+            // labelHelp_NFA
+            // 
+            labelHelp_NFA.Location = new Point(71, 89);
+            labelHelp_NFA.Name = "labelHelp_NFA";
+            labelHelp_NFA.Size = new Size(82, 30);
+            labelHelp_NFA.TabIndex = 3;
+            labelHelp_NFA.Text = "Руководство пользователя";
+            labelHelp_NFA.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 8F);
+            label1.Location = new Point(0, 89);
+            label1.Name = "label1";
+            label1.Size = new Size(76, 13);
+            label1.TabIndex = 3;
+            label1.Text = "Разработчик";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // buttonВeveloper_NFA
+            // 
+            buttonВeveloper_NFA.BackColor = Color.White;
+            buttonВeveloper_NFA.BackgroundImageLayout = ImageLayout.None;
+            buttonВeveloper_NFA.Cursor = Cursors.Hand;
+            buttonВeveloper_NFA.FlatStyle = FlatStyle.Popup;
+            buttonВeveloper_NFA.Image = (Image)resources.GetObject("buttonВeveloper_NFA.Image");
+            buttonВeveloper_NFA.Location = new Point(6, 22);
+            buttonВeveloper_NFA.Name = "buttonВeveloper_NFA";
+            buttonВeveloper_NFA.Size = new Size(64, 64);
+            buttonВeveloper_NFA.TabIndex = 2;
+            toolTip_NFA.SetToolTip(buttonВeveloper_NFA, "Информация о разработчике");
+            buttonВeveloper_NFA.UseVisualStyleBackColor = false;
+            buttonВeveloper_NFA.Click += buttonВeveloper_NFA_Click;
+            // 
             // panelGrid_NFA
             // 
             panelGrid_NFA.AutoScroll = true;
@@ -439,6 +507,7 @@
             // 
             // buttonMore_NFA
             // 
+            buttonMore_NFA.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             buttonMore_NFA.Cursor = Cursors.Hand;
             buttonMore_NFA.Enabled = false;
             buttonMore_NFA.FlatStyle = FlatStyle.Popup;
@@ -484,16 +553,6 @@
             labelAvg_NFA.Text = "Среднее: ";
             labelAvg_NFA.Visible = false;
             // 
-            // groupBoxInformation_NFA
-            // 
-            groupBoxInformation_NFA.Dock = DockStyle.Left;
-            groupBoxInformation_NFA.Location = new Point(3, 3);
-            groupBoxInformation_NFA.Name = "groupBoxInformation_NFA";
-            groupBoxInformation_NFA.Size = new Size(200, 122);
-            groupBoxInformation_NFA.TabIndex = 0;
-            groupBoxInformation_NFA.TabStop = false;
-            groupBoxInformation_NFA.Text = "Разработчик";
-            // 
             // FormMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -519,6 +578,8 @@
             groupBoxEdit_NFA.ResumeLayout(false);
             groupBoxEdit_NFA.PerformLayout();
             tabPageInformation_NFA.ResumeLayout(false);
+            groupBoxInformation_NFA.ResumeLayout(false);
+            groupBoxInformation_NFA.PerformLayout();
             panelGrid_NFA.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridViewMainGrid_NFA).EndInit();
             panelStatistics_NFA.ResumeLayout(false);
@@ -563,5 +624,9 @@
         private Button buttonMore_NFA;
         private Label labelAvg_NFA;
         private GroupBox groupBoxInformation_NFA;
+        private Label label1;
+        private Button buttonВeveloper_NFA;
+        private Button buttonGuide_NFA;
+        private Label labelHelp_NFA;
     }
 }

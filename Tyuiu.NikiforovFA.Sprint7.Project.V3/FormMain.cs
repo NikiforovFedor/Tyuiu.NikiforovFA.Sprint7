@@ -1,4 +1,5 @@
 using System.Windows.Forms;
+using Tyuiu.NikiforovFA.Sprint6.Task7.V14;
 using Tyuiu.NikiforovFA.Sprint7.Project.V3.Lib;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 namespace Tyuiu.NikiforovFA.Sprint7.Project.V3
@@ -17,7 +18,7 @@ namespace Tyuiu.NikiforovFA.Sprint7.Project.V3
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         public DataGridView GetDataGridView()
@@ -109,6 +110,7 @@ namespace Tyuiu.NikiforovFA.Sprint7.Project.V3
                 textBoxSearch_NFA.Enabled = true;
                 buttonSearch_NFA.Enabled = true;
                 buttonMore_NFA.Enabled = true;
+                buttonÂeveloper_NFA.Enabled = true;
                 TabBarNavigation_NFA.SelectedIndex = 1;
 
             }
@@ -313,6 +315,19 @@ namespace Tyuiu.NikiforovFA.Sprint7.Project.V3
         {
             FormStatistics formMore = new FormStatistics(dataGridViewMainGrid_NFA);
             formMore.ShowDialog();
+        }
+
+
+        private void buttonÂeveloper_NFA_Click(object sender, EventArgs e)
+        {
+            FormAbout formAbout = new FormAbout();
+            formAbout.ShowDialog();
+        }
+
+        private void buttonGuide_NFA_Click(object sender, EventArgs e)
+        {
+            FormUserGuide formUserGuide = new FormUserGuide();
+            formUserGuide.ShowDialog();
         }
     }
 }

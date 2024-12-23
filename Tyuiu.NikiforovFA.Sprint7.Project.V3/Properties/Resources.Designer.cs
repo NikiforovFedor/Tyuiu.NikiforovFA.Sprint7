@@ -93,6 +93,16 @@ namespace Tyuiu.NikiforovFA.Sprint7.Project.V3.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap photo_2024_12_11_19_30_43 {
+            get {
+                object obj = ResourceManager.GetObject("photo_2024-12-11_19-30-43", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap search_icon {
             get {
                 object obj = ResourceManager.GetObject("search-icon", resourceCulture);
