@@ -87,7 +87,6 @@ namespace Tyuiu.NikiforovFA.Sprint7.Project.V3
                 dataGridViewMainGrid_NFA.Columns[4].ValueType = typeof(int);
                 dataGridViewMainGrid_NFA.Columns[5].ValueType = typeof(int);
                 dataGridViewMainGrid_NFA.Columns[6].ValueType = typeof(int);
-
                 dataGridViewMainGrid_NFA.Columns[7].ValueType = typeof(int);
 
                 rows = array.GetLength(0);
