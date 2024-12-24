@@ -16,9 +16,6 @@ namespace Tyuiu.NikiforovFA.Sprint7.Project.V3.Test
             wait[1, 0] = "2";
             wait[1, 1] = "osu1";
             wait[1, 2] = "4";
-
-
-
             CollectionAssert.AreEqual(ds.OpenFile(path), wait);
         }
     }

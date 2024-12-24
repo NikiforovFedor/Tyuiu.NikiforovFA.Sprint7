@@ -59,7 +59,7 @@
             // labelExpAvg_NFA
             // 
             labelExpAvg_NFA.AutoSize = true;
-            labelExpAvg_NFA.Location = new Point(6, 79);
+            labelExpAvg_NFA.Location = new Point(6, 111);
             labelExpAvg_NFA.Name = "labelExpAvg_NFA";
             labelExpAvg_NFA.Size = new Size(90, 15);
             labelExpAvg_NFA.TabIndex = 0;
@@ -68,7 +68,7 @@
             // labelAvgAge_NFA
             // 
             labelAvgAge_NFA.AutoSize = true;
-            labelAvgAge_NFA.Location = new Point(6, 64);
+            labelAvgAge_NFA.Location = new Point(6, 96);
             labelAvgAge_NFA.Name = "labelAvgAge_NFA";
             labelAvgAge_NFA.Size = new Size(106, 15);
             labelAvgAge_NFA.TabIndex = 0;
@@ -77,7 +77,7 @@
             // labelMinAge_NFA
             // 
             labelMinAge_NFA.AutoSize = true;
-            labelMinAge_NFA.Location = new Point(6, 49);
+            labelMinAge_NFA.Location = new Point(6, 65);
             labelMinAge_NFA.Name = "labelMinAge_NFA";
             labelMinAge_NFA.Size = new Size(141, 15);
             labelMinAge_NFA.TabIndex = 0;
@@ -86,7 +86,7 @@
             // labelMaxAge_NFA
             // 
             labelMaxAge_NFA.AutoSize = true;
-            labelMaxAge_NFA.Location = new Point(6, 34);
+            labelMaxAge_NFA.Location = new Point(6, 50);
             labelMaxAge_NFA.Name = "labelMaxAge_NFA";
             labelMaxAge_NFA.Size = new Size(145, 15);
             labelMaxAge_NFA.TabIndex = 0;

@@ -15,19 +15,29 @@ namespace Tyuiu.NikiforovFA.Sprint7.Project.V3
         int rows;
         int columns;
         string OpenFilePath = "";
+        bool flagRowHeaderClick = false;
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-
+            
         }
 
-        public DataGridView GetDataGridView()
-        {
-            return dataGridViewMainGrid_NFA;
-
-        }
         private void buttonExport_NFA_Click(object sender, EventArgs e)
         {
+            foreach (DataGridViewRow row in dataGridViewMainGrid_NFA.Rows)
+            {
+                if (row.IsNewRow) continue;
+
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    if (!string.IsNullOrWhiteSpace(cell.Value?.ToString()))
+                    {
+                        dataGridViewMainGrid_NFA.Rows.Remove(row);
+                        break;
+                    }
+                }
+            }
+
             saveFileDialogExport_NFA.FileName = "OutputSprint7.csv";
             saveFileDialogExport_NFA.ShowDialog();
 
@@ -85,6 +95,7 @@ namespace Tyuiu.NikiforovFA.Sprint7.Project.V3
                 dataGridViewMainGrid_NFA.RowCount = rows;
                 dataGridViewMainGrid_NFA.ColumnCount = columns;
 
+
                 for (int i = 0; i < rows; i++)
                 {
                     for (int j = 0; j < columns; j++)
@@ -139,13 +150,7 @@ namespace Tyuiu.NikiforovFA.Sprint7.Project.V3
                 MessageBox.Show("Пожалуйста, выберите строку для удаления", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void tabPageMain_NFA_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonSearch_NFA_Click(object sender, EventArgs e)
         {
             try
             {
@@ -189,42 +194,12 @@ namespace Tyuiu.NikiforovFA.Sprint7.Project.V3
             }
         }
 
-        private void textBoxSearch_NFA_MultilineChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void textBoxSearch_NFA_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                button1_Click(sender, e);
+                buttonSearch_NFA_Click(sender, e);
             }
-        }
-
-        private void buttonRemoveRow_NFA_MouseHover(object sender, EventArgs e)
-        {
-            //toolTip_NFA.ToolTipTitle = "Удалить строку";
-        }
-
-        private void buttonAddRow_NFA_MouseHover(object sender, EventArgs e)
-        {
-            //toolTip_NFA.ToolTipTitle = "Добавить строку";
-        }
-
-        private void buttonSearch_NFA_MouseHover(object sender, EventArgs e)
-        {
-            //toolTip_NFA.ToolTipTitle = "Начать поиск";
-        }
-
-        private void buttonImport_NFA_MouseHover(object sender, EventArgs e)
-        {
-            //toolTip_NFA.ToolTipTitle = "Импортировать файл";
-        }
-
-        private void buttonExport_NFA_MouseHover(object sender, EventArgs e)
-        {
-            //toolTip_NFA.ToolTipTitle = "Экпортировать файл";
         }
 
         private void dataGridViewMainGrid_NFA_KeyDown(object sender, KeyEventArgs e)
@@ -275,40 +250,19 @@ namespace Tyuiu.NikiforovFA.Sprint7.Project.V3
         {
             labelSelected_NFA.Text = "Выбрано: " + (dataGridViewMainGrid_NFA.SelectedCells.Count).ToString();
             labelSelected_NFA.Visible = true;
-
-
-            //var selectedCells = dataGridViewMainGrid_NFA.SelectedCells;
-            //double sum = 0;
-            //foreach (DataGridViewCell cell in selectedCells)
-            //{
-            //        if (double.TryParse(cell.Value.ToString(), out double value))
-            //        {
-            //            sum += value;
-            //        }
-            //}
-            //labelAvg_NFA.Text = "Среднее: " + (sum / (dataGridViewMainGrid_NFA.SelectedCells.Count)).ToString();
-            //labelAvg_NFA.Visible = true;
-
         }
 
         private void dataGridViewMainGrid_NFA_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
-            string col = "024567";
-            if (col.Contains(e.ColumnIndex.ToString()) && !long.TryParse(e.FormattedValue.ToString(), out _))
+            if (flagRowHeaderClick != true)
             {
-                e.Cancel = true;
-                MessageBox.Show("Пожалуйста, введите число в этом столбце.", "Ошибка ввода", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string col = "13";
+                if ((col.Contains(e.ColumnIndex.ToString())) && !char.IsLetter(e.FormattedValue.ToString().FirstOrDefault()))
+                {
+                    e.Cancel = true;
+                    MessageBox.Show("Пожалуйста, введите буквы в этом столбце.", "Ошибка ввода", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            if (!(col.Contains(e.ColumnIndex.ToString())) && !char.IsLetter(e.FormattedValue.ToString().FirstOrDefault()))
-            {
-                e.Cancel = true;
-                MessageBox.Show("Пожалуйста, введите буквы в этом столбце.", "Ошибка ввода", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void dataGridViewMainGrid_NFA_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
         private void buttonMore_NFA_Click(object sender, EventArgs e)
@@ -316,7 +270,6 @@ namespace Tyuiu.NikiforovFA.Sprint7.Project.V3
             FormStatistics formMore = new FormStatistics(dataGridViewMainGrid_NFA);
             formMore.ShowDialog();
         }
-
 
         private void buttonВeveloper_NFA_Click(object sender, EventArgs e)
         {
@@ -328,6 +281,20 @@ namespace Tyuiu.NikiforovFA.Sprint7.Project.V3
         {
             FormUserGuide formUserGuide = new FormUserGuide();
             formUserGuide.ShowDialog();
+        }
+
+        private void dataGridViewMainGrid_NFA_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.ColumnIndex == -1)
+            {
+                flagRowHeaderClick = true;
+            }
+        }
+
+        private void dataGridViewMainGrid_NFA_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            e.Cancel = true;
+            MessageBox.Show("Пожалуйста, введите число в этом столбце.", "Ошибка ввода", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }
