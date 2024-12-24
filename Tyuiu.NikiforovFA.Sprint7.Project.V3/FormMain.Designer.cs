@@ -30,7 +30,7 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             panelMenu_NFA = new Panel();
             TabBarNavigation_NFA = new TabControl();
             tabPageFile_NFA = new TabPage();
@@ -187,7 +187,6 @@
             // tabPageMain_NFA
             // 
             tabPageMain_NFA.BackColor = Color.FromArgb(241, 241, 241);
-            tabPageMain_NFA.BorderStyle = BorderStyle.FixedSingle;
             tabPageMain_NFA.Controls.Add(groupBoxSearch_NFA);
             tabPageMain_NFA.Controls.Add(groupBoxEdit_NFA);
             tabPageMain_NFA.Location = new Point(4, 24);
@@ -206,7 +205,7 @@
             groupBoxSearch_NFA.Location = new Point(150, 3);
             groupBoxSearch_NFA.Margin = new Padding(0);
             groupBoxSearch_NFA.Name = "groupBoxSearch_NFA";
-            groupBoxSearch_NFA.Size = new Size(721, 120);
+            groupBoxSearch_NFA.Size = new Size(723, 122);
             groupBoxSearch_NFA.TabIndex = 1;
             groupBoxSearch_NFA.TabStop = false;
             groupBoxSearch_NFA.Text = "Поиск";
@@ -249,7 +248,7 @@
             groupBoxEdit_NFA.Location = new Point(3, 3);
             groupBoxEdit_NFA.Margin = new Padding(0);
             groupBoxEdit_NFA.Name = "groupBoxEdit_NFA";
-            groupBoxEdit_NFA.Size = new Size(147, 120);
+            groupBoxEdit_NFA.Size = new Size(147, 122);
             groupBoxEdit_NFA.TabIndex = 0;
             groupBoxEdit_NFA.TabStop = false;
             groupBoxEdit_NFA.Text = "Редактирование";
@@ -400,14 +399,14 @@
             dataGridViewMainGrid_NFA.BackgroundColor = Color.White;
             dataGridViewMainGrid_NFA.BorderStyle = BorderStyle.None;
             dataGridViewMainGrid_NFA.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = SystemColors.Control;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dataGridViewMainGrid_NFA.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridViewMainGrid_NFA.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewMainGrid_NFA.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewMainGrid_NFA.Columns.AddRange(new DataGridViewColumn[] { ColumnID_NFA, ColumnName_NFA, ColumnNumber_NFA, ColumnSubject_NFA, ColumnAge_NFA, ColumnAudienceNumber_NFA, ColumnExperience_NFA, ColumnHoursPerWeek_NFA });
             dataGridViewMainGrid_NFA.Dock = DockStyle.Fill;
@@ -532,7 +531,7 @@
             // 
             // panelStatistics_NFA
             // 
-            panelStatistics_NFA.BackColor = Color.LightGray;
+            panelStatistics_NFA.BackColor = Color.Gainsboro;
             panelStatistics_NFA.Controls.Add(buttonMore_NFA);
             panelStatistics_NFA.Controls.Add(labelSelected_NFA);
             panelStatistics_NFA.Dock = DockStyle.Bottom;
