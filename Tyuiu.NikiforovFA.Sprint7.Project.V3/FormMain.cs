@@ -9,13 +9,14 @@ namespace Tyuiu.NikiforovFA.Sprint7.Project.V3
         public FormMain()
         {
             InitializeComponent();
+            openFileDialogImport_NFA.Filter = "Значения, разделенные запятыми(*.csv)|*.csv|Все файлы(*.*)|*.*";
+            saveFileDialogExport_NFA.Filter = "Значения, разделенные запятыми(*.csv)|*.csv|Все файлы(*.*)|*.*";
         }
 
         DataService ds = new DataService();
         int rows;
         int columns;
         string OpenFilePath = "";
-        bool flagRowHeaderClick = false;
 
         private void FormMain_Load(object sender, EventArgs e)
         {
@@ -24,52 +25,55 @@ namespace Tyuiu.NikiforovFA.Sprint7.Project.V3
 
         private void buttonExport_NFA_Click(object sender, EventArgs e)
         {
+            bool zerorows = false;
             foreach (DataGridViewRow row in dataGridViewMainGrid_NFA.Rows)
             {
-                if (row.IsNewRow) continue;
 
                 foreach (DataGridViewCell cell in row.Cells)
                 {
-                    if (!string.IsNullOrWhiteSpace(cell.Value?.ToString()))
+                    var cellValue = cell.Value;
+                    if (cellValue == null || cellValue.ToString() == "")
                     {
-                        dataGridViewMainGrid_NFA.Rows.Remove(row);
+                        zerorows = true;
                         break;
                     }
                 }
             }
-
-            saveFileDialogExport_NFA.FileName = "OutputSprint7.csv";
-            saveFileDialogExport_NFA.ShowDialog();
-
-            string path = saveFileDialogExport_NFA.FileName;
-
-            FileInfo file = new FileInfo(path);
-            if (file.Exists)
+            if (zerorows == false)
             {
-                file.Delete();
-            }
+                saveFileDialogExport_NFA.FileName = "OutputSprint7.csv";
+                saveFileDialogExport_NFA.ShowDialog();
 
-            string str = "";
-            dataGridViewMainGrid_NFA.RowCount = rows;
-            dataGridViewMainGrid_NFA.ColumnCount = columns;
+                string path = saveFileDialogExport_NFA.FileName;
 
-            for (int i = 0; i < rows; i++)
-            {
-                for (int j = 0; j < columns; j++)
+                FileInfo file = new FileInfo(path);
+                if (file.Exists)
                 {
-                    if (j != (columns - 1))
-                    {
-                        str += dataGridViewMainGrid_NFA.Rows[i].Cells[j].Value + ";";
-                    }
-                    else
-                    {
-                        str += dataGridViewMainGrid_NFA.Rows[i].Cells[j].Value;
-                    }
+                    file.Delete();
                 }
-                File.AppendAllText(path, str + Environment.NewLine);
-                str = "";
-            }
+                string str = "";
 
+                for (int i = 0; i < dataGridViewMainGrid_NFA.RowCount; i++)
+                {
+                    for (int j = 0; j < dataGridViewMainGrid_NFA.ColumnCount; j++)
+                    {
+                        if (j != (columns - 1))
+                        {
+                            str += dataGridViewMainGrid_NFA.Rows[i].Cells[j].Value + ";";
+                        }
+                        else
+                        {
+                            str += dataGridViewMainGrid_NFA.Rows[i].Cells[j].Value;
+                        }
+                    }
+                    File.AppendAllText(path, str + Environment.NewLine);
+                    str = "";
+                }
+            }
+            else
+            {
+                MessageBox.Show("В файле есть пустые ячейки!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void buttonImport_NFA_Click(object sender, EventArgs e)
@@ -87,7 +91,6 @@ namespace Tyuiu.NikiforovFA.Sprint7.Project.V3
                 dataGridViewMainGrid_NFA.Columns[4].ValueType = typeof(int);
                 dataGridViewMainGrid_NFA.Columns[5].ValueType = typeof(int);
                 dataGridViewMainGrid_NFA.Columns[6].ValueType = typeof(int);
-
                 dataGridViewMainGrid_NFA.Columns[7].ValueType = typeof(int);
 
                 rows = array.GetLength(0);
@@ -253,19 +256,6 @@ namespace Tyuiu.NikiforovFA.Sprint7.Project.V3
             labelSelected_NFA.Visible = true;
         }
 
-        private void dataGridViewMainGrid_NFA_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
-        {
-            if (flagRowHeaderClick != true)
-            {
-                string col = "13";
-                if ((col.Contains(e.ColumnIndex.ToString())) && !char.IsLetter(e.FormattedValue.ToString().FirstOrDefault()))
-                {
-                    e.Cancel = true;
-                    MessageBox.Show("Пожалуйста, введите буквы в этом столбце.", "Ошибка ввода", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
-
         private void buttonMore_NFA_Click(object sender, EventArgs e)
         {
             FormStatistics formMore = new FormStatistics(dataGridViewMainGrid_NFA);
@@ -282,14 +272,6 @@ namespace Tyuiu.NikiforovFA.Sprint7.Project.V3
         {
             FormUserGuide formUserGuide = new FormUserGuide();
             formUserGuide.ShowDialog();
-        }
-
-        private void dataGridViewMainGrid_NFA_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            if (e.ColumnIndex == -1)
-            {
-                flagRowHeaderClick = true;
-            }
         }
 
         private void dataGridViewMainGrid_NFA_DataError(object sender, DataGridViewDataErrorEventArgs e)

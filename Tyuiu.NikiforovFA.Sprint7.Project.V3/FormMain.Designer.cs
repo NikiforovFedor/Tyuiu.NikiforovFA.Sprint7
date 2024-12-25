@@ -418,9 +418,7 @@
             dataGridViewMainGrid_NFA.TabIndex = 0;
             dataGridViewMainGrid_NFA.TabStop = false;
             dataGridViewMainGrid_NFA.CellBeginEdit += dataGridViewMainGrid_NFA_CellBeginEdit;
-            dataGridViewMainGrid_NFA.CellValidating += dataGridViewMainGrid_NFA_CellValidating;
             dataGridViewMainGrid_NFA.DataError += dataGridViewMainGrid_NFA_DataError;
-            dataGridViewMainGrid_NFA.RowHeaderMouseClick += dataGridViewMainGrid_NFA_RowHeaderMouseClick;
             dataGridViewMainGrid_NFA.SelectionChanged += dataGridViewMainGrid_NFA_SelectionChanged;
             dataGridViewMainGrid_NFA.KeyDown += dataGridViewMainGrid_NFA_KeyDown;
             // 
